@@ -2,7 +2,6 @@ $morse = {'A' => '.-', 'B' => -'-...', 'C' => '-.-.', 'D' => '-..', 'E' => '.', 
   'H' => ' ....', 'I' => '..', 'J' => '.---' , 'K' => '-.-','L' => '.-..' , 'M' => '--', 'N' => '-.','O' => '---' , 'P' => '.--.','Q' => '--.-','R' => '.-.', 
 'S' => '...' ,'T' => '-' ,'U' => '..-', 'V' => '...-', 'W' => '.--', 'X' => '-..-', 'Y' => '-.--' ,'Z' => '--..'}
 
-
 # def decode_morse (arg)
   
 #     $morse.each do |key, value|
@@ -12,15 +11,13 @@ $morse = {'A' => '.-', 'B' => -'-...', 'C' => '-.-.', 'D' => '-..', 'E' => '.', 
 #     end
 # end
 
-
-
 def decode_morse(arg)
-  word = arg.split('')
-  result = ''
+  word = arg.split
+  result = []
   word.each do |char|
     $morse.each do |key, value|
       if word[char] == value
-        result += key
+        result.push(key)
       end
     end
   end
