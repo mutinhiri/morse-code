@@ -4,8 +4,6 @@ $morse = {'A' => '.-', 'B' => -'-...', 'C' => '-.-.', 'D' => '-..', 'E' => '.', 
 
 
 # def decode_morse (arg)
-#   decoded = arg.split(' ')
-#   decoded.each {|word| if word }
   
 #     $morse.each do |key, value|
 #       if arg == value
@@ -14,10 +12,18 @@ $morse = {'A' => '.-', 'B' => -'-...', 'C' => '-.-.', 'D' => '-..', 'E' => '.', 
 #     end
 # end
 
-# decode_morse "-- -.--   -. .- -- ."
 
-# def decode_morse(arg)
-#   word = arg.split
-#   result = ''
-#   word.each do |char|
-#     result += de
+
+def decode_morse(arg)
+  word = arg.split('')
+  result = ''
+  word.each do |char|
+    $morse.each do |key, value|
+      if word[char] == value
+        result += key
+      end
+    end
+  end
+end
+
+decode_morse "-- -.--   -. .- -- ."
