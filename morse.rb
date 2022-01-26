@@ -2,25 +2,43 @@ $morse = {'A' => '.-', 'B' => -'-...', 'C' => '-.-.', 'D' => '-..', 'E' => '.', 
   'H' => ' ....', 'I' => '..', 'J' => '.---' , 'K' => '-.-','L' => '.-..' , 'M' => '--', 'N' => '-.','O' => '---' , 'P' => '.--.','Q' => '--.-','R' => '.-.', 
 'S' => '...' ,'T' => '-' ,'U' => '..-', 'V' => '...-', 'W' => '.--', 'X' => '-..-', 'Y' => '-.--' ,'Z' => '--..'}
 
-# def decode_morse (arg)
+ def decode_morse_letter (arg)
   
-#     $morse.each do |key, value|
-#       if arg == value
-#         print key
-#       end
-#     end
-# end
+     $morse.each do |key, value|
+       if arg == value
+         print key
+       end
+     end
+ end
 
-def decode_morse(arg)
-  word = arg.split
-  result = []
-  word.each do |char|
-    $morse.each do |key, value|
-      if word[char] == value
-        result.push(key)
-      end
-    end
-  end
+
+def decode_morse_word(arg)
+    decoded = arg.split
+decoded.each do |item|
+   $morse.each do |key, value|
+   if value == item
+    result =+ key 
+   print result
+ end
+  
+   
 end
 
-decode_morse "-- -.--   -. .- -- ."
+end
+
+end
+
+
+  def decode_morse_sentence(arg) 
+    words = arg.split
+
+    words.each do |key|
+       decode_morse_word key
+     
+
+    end 
+
+  end 
+  decode_morse_sentence '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...'
+
+  
