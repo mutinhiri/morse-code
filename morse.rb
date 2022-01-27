@@ -22,28 +22,12 @@ end
 
 def decode(phrase)
   sentence = phrase.split('   ')
-  
+  sentence = sentence.map do |c|
+    decode_word(c)
+  end
+  sentence.join(' ')
+end
 
-# def decode_char(morse_char)
-#   @morse_alphabet[morse_char]
-# end
-
-# def decode_word(morse_word)
-#   chars = morse_word.split
-#   char = chars.map do |c|
-#     decode_char(c)
-#   end
-#   char.join
-# end
-
-# def decode(morse_phrase)
-#   words = morse_phrase.split('   ')
-#   words = words.map do |w|
-#     decode_word(w)
-#   end
-#   words.join(' ')
-# end
-
-puts decode(".-")
-puts decode("-- -.--")
+puts decoded_character(".-")
+puts decode_word("-- -.--")
 puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
