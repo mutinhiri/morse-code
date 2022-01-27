@@ -14,20 +14,27 @@ end
 
 def decode_word(message)
   chars = message.split
-  char = chars.map do |item|
-    decoded_character(item)
+  result = []
+  chars.each do |char|
+    result.push(decoded_character(char))
   end
-  char.join
+  result.join
+  # char = chars.map do |item|
+  #   decoded_character(item)
+  # end
+  # char.join
 end
 
 def decode(phrase)
   sentence = phrase.split('   ')
-  sentence = sentence.map do |c|
-    decode_word(c)
+  result = []
+  sentence.each do |char|
+    result.push(decode_word(char))
   end
-  sentence.join(' ')
+  result.join(' ')
 end
 
 puts decoded_character(".-")
 puts decode_word("-- -.--")
 puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
+puts decode('      .-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
