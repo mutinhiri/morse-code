@@ -1,4 +1,3 @@
-
 def decoded_char(char)
   @morse_to_char = {
     '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D', '.' => 'E', '..-.' => 'F', '--.' => 'G', '....' => 'H',
@@ -32,5 +31,4 @@ def decode(message)
   end
   result.join(' ')
 end
-
 puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
