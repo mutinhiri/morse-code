@@ -14,9 +14,16 @@ end
 
 def decode_word(message)
   chars = message.split
-  char = chars.map
- 
+  char = chars.map do |item|
+    decoded_character(item)
+  end
+  char.join
 end
+
+def decode(phrase)
+  sentence = phrase.split('   ')
+  
+
 # def decode_char(morse_char)
 #   @morse_alphabet[morse_char]
 # end
