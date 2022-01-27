@@ -1,44 +1,38 @@
-$morse = {'A' => '.-', 'B' => -'-...', 'C' => '-.-.', 'D' => '-..', 'E' => '.', 'F' => '..-.' , 'G' => ' --.',
-  'H' => ' ....', 'I' => '..', 'J' => '.---' , 'K' => '-.-','L' => '.-..' , 'M' => '--', 'N' => '-.','O' => '---' , 'P' => '.--.','Q' => '--.-','R' => '.-.', 
-'S' => '...' ,'T' => '-' ,'U' => '..-', 'V' => '...-', 'W' => '.--', 'X' => '-..-', 'Y' => '-.--' ,'Z' => '--..'}
 
- def decode_morse_letter (arg)
-  
-     $morse.each do |key, value|
-       if arg == value
-         print key
-       end
-     end
- end
-
-
-def decode_morse_word(arg)
-    decoded = arg.split
-decoded.each do |item|
-   $morse.each do |key, value|
-   if value == item
-    result =+ key 
-   print result
- end
-  
-   
+def decoded_char(char)
+  @morse_to_char = {
+    '.-' => 'a', '-...' => 'b', '-.-.' => 'c', '-..' => 'd', '.' => 'e', '..-.' => 'f', '--.' => 'g', '....' => 'h',
+    '..' => 'i', '.---' => 'j', '-.-' => 'k', '.-..' => 'l', '--' => 'm', '-.' => 'n', '---' => 'o', '.--.' => 'p',
+    '--.-' => 'q', '.-.' => 'r', '...' => 's', '-' => 't', '..-' => 'u', '...-' => 'v', '.--' => 'w', '-..-' => 'x',
+    '-.--' => 'y', '--..' => 'z', '.----' => '1', '..---' => '2', '...--' => '3', '....-' => '4', '.....' => '5',
+    '-....' => '6', '--...' => '7', '---..' => '8', '----.' => '9', '-----' => '0'
+  }
+  @result = @morse_to_char[char]
+  if @result.nil?
+    ' '
+  else
+    @result
+  end
 end
 
+def decoded_word(word)
+  word = word.split
+  result = ''
+  word.each do |char|
+    result += decoded_char(char)
+  end
+  result
 end
 
+def decode(message)
+  message = message.split('   ')
+  result = []
+  message.each do |char|
+    result.push(decoded_word(char))
+  end
+  result.join(' ')
 end
 
+puts decode('-- -.--   -. .- -- .')
 
-  def decode_morse_sentence(arg) 
-    words = arg.split
-
-    words.each do |key|
-       decode_morse_word key
-     
-
-    end 
-
-  end 
-  decode_morse_sentence '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...'
-
-  
+puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
