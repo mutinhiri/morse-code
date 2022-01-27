@@ -1,4 +1,4 @@
-
+def decoded_char(char)
   @morse_to_char = {
     '.-' => 'A', '-...' => 'B', '-.-.' => 'C', '-..' => 'D', '.' => 'E', '..-.' => 'F', '--.' => 'G', '....' => 'H',
     '..' => 'I', '.---' => 'J', '-.-' => 'K', '.-..' => 'L', '--' => 'M', '-.' => 'N', '---' => 'O', '.--.' => 'P',
@@ -6,35 +6,36 @@
     '-.--' => 'Y', '--..' => 'Z', '.----' => '1', '..---' => '2', '...--' => '3', '....-' => '4', '.....' => '5',
     '-....' => '6', '--...' => '7', '---..' => '8', '----.' => '9', '-----' => '0'
   }
- 
+  @result = @morse_to_char[char]
+  if @result.nil?
+    ' '
+  else
+    @result
+  end
+end
 
 def decoded_character(word)
  @morse_to_char[word]
 end 
 
-def decode_word(message)
-  chars = message.split
-  result = []
-  chars.each do |char|
-    result.push(decoded_character(char))
+def decoded_word(word)
+  word = word.split
+  result = ''
+  word.each do |char|
+    result += decoded_char(char)
   end
-  result.join
-  # char = chars.map do |item|
-  #   decoded_character(item)
-  # end
-  # char.join
+  result
 end
 
-def decode(phrase)
-  sentence = phrase.split('   ')
+def decode(message)
+  message = message.split('   ')
   result = []
-  sentence.each do |char|
-    result.push(decode_word(char))
+  message.each do |char|
+    result.push(decoded_word(char))
   end
   result.join(' ')
 end
 
-puts decoded_character(".-")
-puts decode_word("-- -.--")
+puts decoded_char('-...')
+puts decoded_word("-- -.--")
 puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
-puts decode('      .-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
