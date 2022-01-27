@@ -15,8 +15,8 @@ def decoded_char(char)
 end
 
 def decoded_character(word)
- @morse_to_char[word]
-end 
+  @morse_to_char[word]
+end
 
 def decoded_word(word)
   word = word.split
@@ -37,5 +37,5 @@ def decode(message)
 end
 
 puts decoded_char('-...')
-puts decoded_word("-- -.--")
+puts decoded_word('-- -.--')
 puts decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-. / .-. ..- -... .. . ...')
